@@ -1,0 +1,35 @@
+body {
+  border: 1px solid black;
+  border-radius: 10px;
+  transition: all 150ms ease-in-out;
+  padding: 30px 5px 30px 5px;
+  margin: 25px 40px 25px 40px;
+  max-width: 650px;
+}
+p {
+  border: 1px solid black;
+  border-radius: 40px;
+  transition: all 150ms ease-in-out;
+  padding: 30px auto;
+  margin: 25px 5px 25px 5px;
+  max-width: 300px;
+}
+.col {
+  text-align: center;
+}
+.day {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  font-size: larger;
+  position: relative;
+  top: -75px;
+  right: -500px;
+}
+.time {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  font-size: larger;
+  position: relative;
+  top: -40px;
+  right: -445px;
+}

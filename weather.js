@@ -1,3 +1,14 @@
+function getTime(time) {
+  let hours = time.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = time.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
 let current = new Date();
 let week = document.querySelector(".day");
 let time = document.querySelector(".time");
@@ -6,22 +17,33 @@ let days = [
   "Sunday",
   "Monday",
   "Tuesday",
-  "Wedesay",
+  "Wednesday",
   "Thursday",
   "Friday",
   "Saturday",
 ];
 let day = days[current.getDay()];
-let hour = current.getHours();
-let minutes = current.getMinutes();
 week.innerHTML = `${day}`;
-time.innerHTML = `${hour}:${minutes}`;
+time.innerHTML = getTime(current);
 
-function searchCity(event) {
-  event.preventDefault();
-  let input = document.querySelector("#city");
-  let h2 = document.querySelector("h2");
-  h2.innerHTML = `${input.value}`;
+function displayWeather(response) {
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#temperature").innerHTML = Math.round(
+    response.data.main.temp
+  );
 }
-let form = document.querySelector("form");
-form.addEventListener("submit", searchCity);
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#city-input").value;
+  searchCity(city);
+}
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
+
+function searchCity(city) {
+  let apiKey = "be60748992fab0f5da8162563fb21245";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeather);
+}
+
+searchCity("Columbus");

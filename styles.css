@@ -14,22 +14,19 @@ p {
   margin: 25px 5px 25px 5px;
   max-width: 300px;
 }
-.col {
-  text-align: center;
-}
+
 .day {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bolder;
   font-size: larger;
-  position: relative;
-  top: -75px;
-  right: -500px;
 }
 .time {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bolder;
   font-size: larger;
+}
+.units {
   position: relative;
   top: -40px;
-  right: -445px;
+  right: -32px;
 }

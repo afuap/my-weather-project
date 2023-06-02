@@ -29,9 +29,13 @@ time.innerHTML = getTime(current);
 function displayWeather(response) {
   let tempElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#description");
+  let windElement = document.querySelector("#wind");
   celsiusTemp = response.data.main.temp;
   cityElement.innerHTML = response.data.name;
   tempElement.innerHTML = Math.round(celsiusTemp);
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
 }
 function handleSubmit(event) {
   event.preventDefault();

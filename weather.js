@@ -27,9 +27,11 @@ week.innerHTML = `${day}`;
 time.innerHTML = getTime(current);
 
 function displayWeather(response) {
-  let celsiusTemp = response.data.main.temp;
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#temperature").innerHTML = Math.round(celsiusTemp);
+  let tempElement = document.querySelector("#temperature");
+  let cityElement = document.querySelector("#city");
+  celsiusTemp = response.data.main.temp;
+  cityElement.innerHTML = response.data.name;
+  tempElement.innerHTML = Math.round(celsiusTemp);
 }
 function handleSubmit(event) {
   event.preventDefault();

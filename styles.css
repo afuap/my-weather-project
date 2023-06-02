@@ -30,10 +30,10 @@ p {
   top: -40px;
   right: -32px;
 }
-.active {
+.units .active {
   color: black;
   cursor: default;
 }
-.active:hover {
+.units .active:hover {
   text-decoration: none;
 }

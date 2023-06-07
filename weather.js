@@ -31,11 +31,16 @@ function displayWeather(response) {
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
   let windElement = document.querySelector("#wind");
+  let iconElement = document.querySelector("#icon");
   celsiusTemp = response.data.main.temp;
   cityElement.innerHTML = response.data.name;
   tempElement.innerHTML = Math.round(celsiusTemp);
   descriptionElement.innerHTML = response.data.weather[0].description;
   windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 function handleSubmit(event) {
   event.preventDefault();

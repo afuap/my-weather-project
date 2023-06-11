@@ -43,10 +43,10 @@ li:first-letter {
   top: -40px;
   right: -32px;
 }
-.units .active {
+.active {
   color: black;
   cursor: default;
 }
-.units .active:hover {
+.active:hover {
   text-decoration: none;
 }

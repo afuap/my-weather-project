@@ -25,7 +25,12 @@ let days = [
 let day = days[current.getDay()];
 week.innerHTML = `${day}`;
 time.innerHTML = getTime(current);
-function displayForecast() {
+function getForecast(coordinates) {
+  let apiKey = "50fa4024e3b1d5eac2f51ab18a47e997";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(displayForecast);
+}
+function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -45,7 +50,6 @@ function displayForecast() {
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
 
 function displayWeather(response) {
@@ -63,6 +67,7 @@ function displayWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  getForecast(response.data.coord);
 }
 function handleSubmit(event) {
   event.preventDefault();
@@ -102,4 +107,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
 searchCity("Columbus");
-displayForecast();
